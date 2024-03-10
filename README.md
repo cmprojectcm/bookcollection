@@ -10,7 +10,7 @@
 - Newtonsoft.Json
 
 ## How to run it
-### Run with MSSQL and Docker
+### Run with MSSQL and Docker (You need to install docker on your machine)
 - Navigate to the root directory of the project
 - Run the following command to start the container ```docker-compose up -d```
 
@@ -23,6 +23,14 @@
 - Navigate inside the ```Program.cs```
 - Comment out the following line: ```builder.Services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase(builder.Configuration.GetValue<string>("MemoryConnectionString")));```
 - Uncomment out the following line ```builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetValue<string>("DbConnectionString")));```
+
+#### Run Migrations
+  ##### Using the Package Manger Console of Visual Studio
+  - Navigate to the root directory of the project
+  - Run the following command ```Update-Database```
+  ##### Using any other Terminal
+  - Navigate to the root directory of the project
+  - Run the following command ```dotnet ef database update``` (You need to install dotnet on your machine)
 
 ### Run with Memory Database
 #### Code changes
