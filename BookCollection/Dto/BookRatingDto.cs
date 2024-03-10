@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BookCollection.Dto
 {
@@ -14,7 +13,7 @@ namespace BookCollection.Dto
     public class RatingValue
     {
         [Required]
-        [Range(1, 5)]
+        [Range(1, 5, ErrorMessage ="Rating Value should be between 1 and 5")]
         public int value { get; set; }
     }
 

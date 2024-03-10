@@ -4,9 +4,6 @@ using BookCollection.Data;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using BookCollection.Data.Models;
-using BookCollection.Dto.Enums;
-using BookCollection.Dto;
-using static System.Reflection.Metadata.BlobBuilder;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 

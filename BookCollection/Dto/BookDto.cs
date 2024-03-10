@@ -1,13 +1,6 @@
-﻿using BookCollection.Data.Models;
-using BookCollection.Dto;
+﻿using BookCollection.Dto;
 using BookCollection.Dto.Enums;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using Newtonsoft.Json.Converters;
-using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace BookCollection.Models
 {

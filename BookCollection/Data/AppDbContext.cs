@@ -1,6 +1,4 @@
 ﻿using BookCollection.Data.Models;
-using BookCollection.Dto.Enums;
-using BookCollection.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookCollection.Data
