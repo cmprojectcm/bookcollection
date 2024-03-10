@@ -1,4 +1,5 @@
 using BookCollection.Data;
+using BookCollection.Middleware;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -34,6 +35,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
