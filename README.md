@@ -12,6 +12,7 @@
 ## How to run it
 ### Run with MSSQL and Docker (You need to install docker on your machine)
 - Navigate to the root directory of the project
+- Make sure you can see the file docker-compose.yml
 - Run the following command to start the container ```docker-compose up -d```
 
 #### MSSQL Information
