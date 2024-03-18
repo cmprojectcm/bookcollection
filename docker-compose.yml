@@ -1,17 +1,53 @@
 version: "3.1"
 
 services:
-  isx-db:
+  db:
     image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: always
     environment:
       - MSSQL_SA_PASSWORD=Yourpassword123!
       - ACCEPT_EULA=Y
       - MSSQL_PID=Developer
     ports:
       - 1433:1433
-    container_name: isx-db
+    container_name: db
     volumes:
       - sqlvolume:/var/opt/mssql
+    networks:
+      - keycloak-network
+  keycloak:
+    image: keycloak/keycloak:latest
+    depends_on:
+      - db
+    environment:
+       - KEYCLOAK_DATABASE_VENDOR=mssql
+       - KEYCLOAK_ADMIN=vatraxos
+       - KEYCLOAK_ADMIN_PASSWORD=s1lienc3
+      # - KEYCLOAK_ENABLE_STATISTICS=true
+      # - KEYCLOAK_ENABLE_HTTPS=false
+      # - KEYCLOAK_PRODUCTION=false
+       - KEYCLOAK_DATABASE_URL=127.0.0.1:1433
+       - KEYCLOAK_DATABASE_USER=sa
+       - KEYCLOAK_DATABASE_PASSWORD=Yourpassword123!
+      # - KEYCLOAK_DATABASE_NAME=Keycloak
+    command: start-dev
+    ports:
+      - 18443:8443
+      - 18080:8080
+      - 19990:9990
+    container_name: keycloak
+    volumes:
+      - keycloak_data:/data
+      - ./keycloak/providers:/opt/jboss/keycloak/providers
+      - ./keycloak/standalone/configuration:/opt/jboss/keycloak/standalone/configuration
+    networks:
+      - keycloak-network
+    
 
 volumes:
   sqlvolume:
+  keycloak_data:
+
+networks:
+  keycloak-network:
+    driver: bridge
